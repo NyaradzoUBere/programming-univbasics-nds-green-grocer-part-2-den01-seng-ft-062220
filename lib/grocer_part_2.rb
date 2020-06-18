@@ -28,9 +28,13 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  
-  
-  
+  counter = 0
+  while counter < cart.length
+    if cart[counter][:clearance]
+      cart[counter][:price] = cart[counter][:price] = (cart[counter][:price] * 0.2)
+    end
+  counter += 1
+end
 end
 
 
