@@ -12,8 +12,8 @@ def apply_coupons(cart, coupons)
         if cart["#{name} W/COUPON"] 
           cart["#{name} W/COUPON"][:count] += 1 
         else 
-          cart["#{name} W/COUPON"] = {[:price] => coupon[:cost], 
-          [:clearance] => cart[name][:clearance], [:count] => 1} 
+          cart["#{name} W/COUPON"] = {:price => coupon[:cost], 
+          :clearance => cart[name][:clearance], :count => 1} 
         end 
   
       cart[name][:count] -= coupon[:num] 
@@ -55,7 +55,6 @@ def checkout(cart, coupons)
   clearance_cart.each do |item, key_hash| 
     sum += (key_hash[:price] * key_hash[:count])
   end 
-sum = (sum * 0.9) if sum > 100
-sum 
+sum = (sum * 0.9) if sum > 100 sum 
 end
 
