@@ -29,7 +29,6 @@ def apply_clearance(cart)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  def apply_clearance(cart) 
   cart.each do |item, key_hash| 
     if key_hash[:clearance] == true 
       key_hash[:price] = (key_hash[:price] *
@@ -50,4 +49,13 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
+    total = 0 
+  new_cart = consolidate_cart(cart) 
+  coupon_cart = apply_coupons(new_cart, coupons) 
+  clearance_cart = apply_clearance(coupon_cart) 
+  clearance_cart.each do |item, attribute_hash| 
+    total += (attribute_hash[:price] * attribute_hash[:count])
+  end 
+total = (total * 0.9) if total > 100 total 
+end
 end
